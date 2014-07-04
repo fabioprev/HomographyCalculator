@@ -1,4 +1,4 @@
-#include "Homography.h"
+#include "HomographyCalculator.h"
 #include <opencv2/calib3d/calib3d.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <iostream>
@@ -6,15 +6,15 @@
 using namespace std;
 using namespace cv;
 
-Homography::Homography(vector<Point2f> srcPoints, vector<Point2f> dstPoints)
+HomographyCalculator::HomographyCalculator(vector<Point2f> srcPoints, vector<Point2f> dstPoints)
 {
 	this->srcPoints = srcPoints;
 	this->dstPoints = dstPoints;
 }
 
-Homography::~Homography() {;}
+HomographyCalculator::~HomographyCalculator() {;}
 
-Mat Homography::calculateHomography()
+Mat HomographyCalculator::calculateHomography()
 {
 	Mat H = findHomography(Mat(srcPoints),Mat(dstPoints),0,0.5);
 	
@@ -35,13 +35,13 @@ Mat Homography::calculateHomography()
 	return H;
 }
 
-void Homography::calculateProjection(Point2f &point, const Mat &H, double &x, double &y)
+void HomographyCalculator::calculateProjection(Point2f &point, const Mat &H, double &x, double &y)
 {
 	x =	(point.x * H.at<double>(0,0) + point.y * H.at<double>(0,1) + H.at<double>(0,2)) / (point.x * H.at<double>(2,0) + point.y * H.at<double>(2,1) + H.at<double>(2,2));
 	y =	(point.x * H.at<double>(1,0) + point.y * H.at<double>(1,1) + H.at<double>(1,2)) / (point.x * H.at<double>(2,0) + point.y * H.at<double>(2,1) + H.at<double>(2,2));
 }
 
-void Homography::draw(const Mat& srcImage, const Mat& dstImage, const Mat& H)
+void HomographyCalculator::draw(const Mat& srcImage, const Mat& dstImage, const Mat& H)
 {
 	Mat dstMat, srcMat;
 	
@@ -145,7 +145,7 @@ int main(int argc, char** argv)
 	scene.push_back(Point2f(660,60));
 	scene.push_back(Point2f(420,60));
 	
-	Homography homography(obj,scene);
+	HomographyCalculator homography(obj,scene);
 	
 	const Mat& H = homography.calculateHomography();
 	

@@ -3,7 +3,7 @@
 #include <opencv2/core/core.hpp>
 #include <vector>
 
-class Homography
+class HomographyCalculator
 {
 	private:
 		std::vector<cv::Point2f> srcPoints;
@@ -12,9 +12,9 @@ class Homography
 		void calculateProjection(cv::Point2f& point, const cv::Mat& H, double& x, double& y);
 		
 	public:
-		Homography(std::vector<cv::Point2f> srcPoints, std::vector<cv::Point2f> dstPoints);
+		HomographyCalculator(std::vector<cv::Point2f> srcPoints, std::vector<cv::Point2f> dstPoints);
 		
-		~Homography();
+		~HomographyCalculator();
 		
 		cv::Mat calculateHomography();
 		void draw(const cv::Mat& srcImage, const cv::Mat& dstImage, const cv::Mat& H);
