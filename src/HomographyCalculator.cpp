@@ -110,21 +110,17 @@ int main(int argc, char** argv)
 	vector<Point2f> obj;
 	vector<Point2f> scene;
 	
-	obj.push_back(Point2f(190,165));
-	obj.push_back(Point2f(394,165));
-	obj.push_back(Point2f(393,215));
-	obj.push_back(Point2f(393,125));
-	obj.push_back(Point2f(595,165));
-	obj.push_back(Point2f(393,426));
-	obj.push_back(Point2f(393,40));
+	obj.push_back(Point2f(54,38));
+	obj.push_back(Point2f(402,29));
+	obj.push_back(Point2f(767,17));
+	obj.push_back(Point2f(402,192));
+	obj.push_back(Point2f(399,388));
 	
-	scene.push_back(Point2f(410,340));
-	scene.push_back(Point2f(523,340));
-	scene.push_back(Point2f(523,450));
-	scene.push_back(Point2f(524,230));
-	scene.push_back(Point2f(638,340));
-	scene.push_back(Point2f(524,676));
-	scene.push_back(Point2f(524,2));
+	scene.push_back(Point2f(57,55));
+	scene.push_back(Point2f(782,55));
+	scene.push_back(Point2f(1506,55));
+	scene.push_back(Point2f(782,428.5));
+	scene.push_back(Point2f(782,799));
 	
 	HomographyCalculator homography(obj,scene);
 	
