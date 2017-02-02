@@ -116,11 +116,11 @@ int main(int argc, char** argv)
 	obj.push_back(Point2f(402,192));
 	obj.push_back(Point2f(399,388));
 	
-	scene.push_back(Point2f(57,55));
-	scene.push_back(Point2f(782,55));
-	scene.push_back(Point2f(1506,55));
-	scene.push_back(Point2f(782,428.5));
-	scene.push_back(Point2f(782,799));
+	scene.push_back(Point2f(28.5,27.5));
+	scene.push_back(Point2f(391,27.5));
+	scene.push_back(Point2f(753,27.5));
+	scene.push_back(Point2f(391,214.25));
+	scene.push_back(Point2f(391,399.5));
 	
 	HomographyCalculator homography(obj,scene);
 	
